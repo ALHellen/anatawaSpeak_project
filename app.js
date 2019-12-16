@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const app = express()
-const users = require('./routes/usersSchema')
+const users = require('./routes/userRoutes')
 const PORT = 3000
 
 app.use(cors())

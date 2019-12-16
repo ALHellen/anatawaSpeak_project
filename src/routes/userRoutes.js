@@ -34,10 +34,10 @@ const authent = (request, response, next) => {
 }
 
 router.get('', authent, controller.getAll)
-router.post('',  controller.addUser)
-router.get('/:id', autenticar, controller.getById)
-router.post('/:userId/wordsToLearn', autenticar, controller.addWordToLearn)
-router.post('/:userId/learnedWords', autenticar, controller.addLearnedWord)
-router.post('/login', controller.login)
+// router.post('',  controller.addUser)
+// router.get('/:id', authent, controller.getById)
+// router.post('/:userId/wordsToLearn', authent, controller.addWordToLearn)
+// router.post('/:userId/learnedWords', authent, controller.addLearnedWord)
+// router.post('/login', controller.login)
 
 module.exports = router

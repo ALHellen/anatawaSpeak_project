@@ -8,4 +8,4 @@ const wordsToLearnSchema = new Schema({
 })
 
 const wordsToLearnModel = mongoose.model('wordsToLearn', wordsToLearnSchema)
-module.exports = wordsToLearnModel
+module.exports = {wordsToLearnModel, wordsToLearnSchema}

@@ -1,7 +1,7 @@
 const { connect } = require('../model/repository')
 const usersModel = require('../model/userSchema')
-const { learnedWordModel } = require('../model/learnedWordSchema')
-const { wordsToLearn } = require('../model/wordsToLearnSchema')
+const { learnedWordModel } = require('../model/learnedWordsSchema')
+const { wordsToLearnModel } = require('../model/wordsToLearnSchema')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 

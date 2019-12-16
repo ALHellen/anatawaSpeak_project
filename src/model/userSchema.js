@@ -3,12 +3,12 @@ const { learnedWordsSchema } = require('./learnedWordsSchema')
 const { wordsToLearnSchema } = require('./wordsToLearnSchema')
 const Schema = mongoose.Schema
 
-const usersSchema = new schema({
+const usersSchema = new Schema({
     _id: { type: mongoose.Schema.Types.ObjectId, auto: true, required: true},
     name: { type: String, required: true},
     language: {type: String, required: true},
     email: { type: String, required: true},
-    password: { tuype: String, required: true},
+    password: { type: String, required: true},
     learnedWords: [learnedWordsSchema],
     wordsToLearn: [wordsToLearnSchema]
 })

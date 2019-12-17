@@ -18,7 +18,7 @@ const authent = (request, response, next) => {
     if (error) {
         authenticated = false
     } else {
-      if (decoded.name == true) {
+      if (decoded.group == 'in') {
         authenticated = true
       } else {
         authenticated = false
@@ -34,10 +34,10 @@ const authent = (request, response, next) => {
 }
 
 router.get('', authent, controller.getAll)
-// router.post('',  controller.addUser)
-// router.get('/:id', authent, controller.getById)
-// router.post('/:userId/wordsToLearn', authent, controller.addWordToLearn)
-// router.post('/:userId/learnedWords', authent, controller.addLearnedWord)
-// router.post('/login', controller.login)
+router.post('',  controller.addUser)
+router.get('/:id', authent, controller.getById)
+router.post('/:userId/wordsToLearn', authent, controller.addWordToLearn)
+router.post('/:userId/learnedWords', authent, controller.addLearnedWord)
+router.post('/login', controller.login)
 
 module.exports = router

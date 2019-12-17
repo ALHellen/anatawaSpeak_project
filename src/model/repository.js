@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const MONGO_URL = 'mongodb://localhost:27017/anatawaSeakApi';
+const MONGO_URL = 'mongodb://localhost:27017/anatawaSpeak';
 
 function connect () {
   mongoose.connect(MONGO_URL,

@@ -51,6 +51,24 @@ const getAll = (request, response) => {
       return response.status(201).send(newUser)
     })
   }
+  
+const addUser = (request, response) => {
+    if(!request.body.password){
+      return response.status(400).send("Please write a password")
+    }
+    const criptPassword = bcrypt.hashSync(request.body.password)
+    request.body.password = criptPassword
+    request.body.group = "in"
+    const newUser = new usersModel(request.body)
+  
+    newUser.save((error) => {
+      if (error) {
+        return response.status(500).send(error)
+      }
+  
+      return response.status(201).send(newUser)
+    })
+  }
 
   const addWordToLearn = async (request, response) => {
     const userId = request.params.userId

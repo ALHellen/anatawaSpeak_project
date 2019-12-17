@@ -9,6 +9,7 @@ const usersSchema = new Schema({
     language: {type: String, required: true},
     email: { type: String, required: true},
     password: { type: String, required: true},
+    group: {type: String},
     learnedWords: [learnedWordsSchema],
     wordsToLearn: [wordsToLearnSchema]
 })

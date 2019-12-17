@@ -33,7 +33,7 @@ const authent = (request, response, next) => {
   next()
 }
 
-router.get('', authent, controller.getAll)
+router.get('',  controller.getAll)
 router.post('',  controller.addUser)
 router.get('/:id', authent, controller.getById)
 router.post('/:userId/wordsToLearn', authent, controller.addWordToLearn)

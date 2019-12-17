@@ -40,7 +40,7 @@ const getAll = (request, response) => {
     }
     const criptPassword = bcrypt.hashSync(request.body.password)
     request.body.password = criptPassword
-    request.body.gorup = "in"
+    request.body.group = "in"
     const newUser = new usersModel(request.body)
   
     newUser.save((error) => {

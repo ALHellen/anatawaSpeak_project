@@ -39,5 +39,12 @@ router.get('/:id', authent, controller.getById)
 router.post('/:userId/wordsToLearn', authent, controller.addWordToLearn)
 router.post('/:userId/learnedWords', authent, controller.addLearnedWord)
 router.post('/login', controller.login)
+router.patch('/:id/update', authent, controller.updateUser )
+router.patch('/:id/updateLearnedWord/:learnedWordId', authent, controller.updateLearnedWord )
+router.patch('/:id/updateWordToLearn/:wordToLearnId', authent, controller.updatewordToLearn )
+router.delete('/:id/deleteUser', authent, controller.removeUser)
+router.delete('/:id/deleteLearnedWords/:learnedWordId', authent, controller.removeLearnedWord)
+router.delete('/:id/deleteWordToLearn/:wordToLearnId', authent, controller.removeWordToLearn)
+
 
 module.exports = router

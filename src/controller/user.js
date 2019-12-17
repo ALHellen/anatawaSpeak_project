@@ -104,13 +104,147 @@ const getAll = (request, response) => {
   return response.status(401).send("Invalid email or password")
   }
 }
+
+const updateUser = (request, response) => {
+    const id = request.params.id
+    const userUpdate = request.body
+    const options = { new: true}
+
+    usersModel.findByIdAndUpdate(
+      id,
+      userUpdate,
+      options,
+      (error, user) => {
+        if(error){
+        return response.status(500).send(error)
+        }
+
+      if(user){
+        return status(200).send(user)
+      }
+
+      return response(401).send("User not found")
+    })
+} 
+
+const updateLearnedWord = (request, response) => {
+  const userId = request.params.userId
+  const learnedWordId = request.params.learnedWordId
+  const options = {new: true}
+
+  usersModel.findByIdAndUpdate({ _id: userId, 'learnedWords._id': learnedWordId },
+  { 'learnedWords.$.word': request.body.word,
+    'learnedWords.$.language': request.body.language,
+    'learnedWords.$.insertDate': request.body.insertDate },
+    options,
+    (error, user) => {
+      if(user){
+        return response.status(200).send(user)
+      }
+
+      return response.status(404).send('User not found.')
+
+    }
+  
+  )
+}
+
+const updatewordToLearn = (request, response) => {
+  const userId = request.params.userId
+  const wordToLearnId = request.params.wordToLearnId
+  const options = {new: true}
+
+  usersModel.findByIdAndUpdate({ _id: userId, 'wordsToLearn._id': wordToLearnId },
+  { 'wordsToLearn.$.word': request.body.word,
+    'wordsToLearn.$.language': request.body.word,
+    'wordsToLearn.$.insertDate': request.body.insertDate },
+    options,
+    (error, user) => {
+      if(user){
+        return response.status(200).send(user)
+      }
+
+      return response.status(404).send('User not found.')
+
+    }
+  
+  )
+}
+
+const removeUser = (resquest, response) => {
+  const id = request.params.id
+
+  usersModel.findByIdAndDelete(id,(error, user) => {
+
+    if(error){
+      return response.status(500).send(error)
+    }
+
+    if(user){
+      return response.status(200).send(id)
+    }
+
+    return response.status(404).send("User not found")
+
+  }) 
+}
+
+const removeLearnedWord = (request, response) => {
+  const userId = request.params.userId
+  const learnedWordId = request.params.learnedWordId
+  const options = {new: true}
+
+  usersModel.findByIdAndDelete({ _id: userId, 'learnedWords': learnedWordId}),
+  options,
+  (error, user) => {
+    if(error){
+      return response.status(500).send(error)
+    }
+
+    if(user){
+      return response.status(200).send(id)
+    }
+
+    return response.status(404).send("User not found")
+  }
+
+}
+
+const removeWordToLearn = (request, response) => {
+  const userId = request.params.userId
+  const wordToLearnId = request.params.wordToLearnId
+  const options = {new: true}
+
+  usersModel.findByIdAndDelete({ _id: userId, 'wordsToLearn': wordToLearnId}),
+  options,
+  (error, user) => {
+    if(error){
+      return response.status(500).send(error)
+    }
+
+    if(user){
+      return response.status(200).send(id)
+    }
+
+    return response.status(404).send("User not found")
+  }
+
+}
+
+
 module.exports = {
     getAll,
     getById,
     addUser,
     addLearnedWord,
     addWordToLearn,
-    login
+    login,
+    updateUser,
+    updateLearnedWord,
+    updatewordToLearn,
+    removeUser,
+    removeLearnedWord,
+    removeWordToLearn
 }  
 
 

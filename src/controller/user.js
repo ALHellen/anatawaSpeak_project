@@ -1,6 +1,6 @@
 const { connect } = require('../model/repository')
 const usersModel = require('../model/userSchema')
-const { learnedWordModel } = require('../model/learnedWordsSchema')
+const { learnedWordsModel } = require('../model/learnedWordsSchema')
 const { wordsToLearnModel } = require('../model/wordsToLearnSchema')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
@@ -57,9 +57,9 @@ const getAll = (request, response) => {
     const word = request.body
     const options = { new: true }
     const newWord = new wordsToLearnModel(word)
-    const user = await wordsToLearnModel.findById(userId)
+    const user = await usersModel.findById(userId)
   
-    user.word.push(newWord)
+    user.wordsToLearn.push(newWord)
     user.save((error) => {
       if (error) {
         return response.status(500).send(error)
@@ -73,10 +73,10 @@ const getAll = (request, response) => {
     const userId = request.params.userId
     const word = request.body
     const options = { new: true }
-    const newWord = new learnedWordModel(word)
-    const user = await learnedWordModel.findById(userId)
+    const newWord = new learnedWordsModel(word)
+    const user = await usersModel.findById(userId)
   
-    user.word.push(newWord)
+    user.learnedWords.push(newWord)
     user.save((error) => {
       if (error) {
         return response.status(500).send(error)

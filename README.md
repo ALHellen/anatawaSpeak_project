@@ -16,3 +16,22 @@ Traz um único usuário.
 
 Adiciona um novo usuário. 
 
+### login
+
+Loga o usuário e gera um token para autorização. 
+
+### addWordToLearn
+
+Adiciona uma palavra que o usuário deseja estudar depois.
+
+### addLearnedWord
+
+Adiciona uma palavra que o usuário já aprendeu.
+
+### updateUser
+
+Modifica dados já cadastrados pelo usuário.
+
+### removeUser
+
+Deleta a conta do usuário. 
